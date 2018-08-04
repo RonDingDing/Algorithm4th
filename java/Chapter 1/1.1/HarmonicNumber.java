@@ -1,3 +1,4 @@
+//倒数的和
 public class HarmonicNumber {
     public static double algorithm(int N) {
         double sum = 0.0;

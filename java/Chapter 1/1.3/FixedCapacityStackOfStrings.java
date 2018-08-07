@@ -34,9 +34,8 @@ public class FixedCapacityStackOfStrings {
         }
         StdOut.println("(" + s.size() + " left on stack)");
     }
-
-    // % more tobe.txt to be or not to - be - - that - - - is
-    // % java FixedCapacityStackOfStrings < tobe.txt 
-    // to be not that or be (2 left on stack)
-
 }
+// % more tobe.txt
+// to be or not to - be - - that - - - is
+// % java FixedCapacityStackOfStrings < tobe.txt
+// to be not that or be (2 left on stack)

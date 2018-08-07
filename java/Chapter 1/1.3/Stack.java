@@ -1,13 +1,14 @@
-public class FixedCapacityStack<Item> {
-    private Item[] a;
+public class Stack<Item> {
+    private Node first;
     private int N;
 
-    public FixedCapacityStack(int cap) {
-        a = (Item[]) new Object[cap];
+    private class Node {
+        Item item;
+        Node next;
     }
 
     public boolean isEmpty() {
-        return N == 0;
+        return first == null;
     }
 
     public int size() {
@@ -15,20 +16,23 @@ public class FixedCapacityStack<Item> {
     }
 
     public void push(Item item) {
-        a[N++] = item;
+        Node oldfirst = first;
+        first = new Node();
+        first.item = item;
+        first.next = oldfirst;
+        N++;
     }
 
     public Item pop() {
-        return a[--N];
+        Item item = first.item;
+        first = first.next;
+        N--;
+        return item;
     }
 
     public static void main(String[] args) {
-<<<<<<< HEAD
-        FixedCapacityStack<String> s;
-        s = new FixedCapacityStack<String>(100);
-=======
-        FixedCapacityStack<String> s;   s = new FixedCapacityStack<String>(100); 
->>>>>>> f5b2a598c662023290b5257db85a68405e798886
+        Stack<String> s = new Stack<String>();
+        
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
             if (!item.equals("-"))
@@ -38,8 +42,4 @@ public class FixedCapacityStack<Item> {
         }
         StdOut.println("(" + s.size() + " left on stack)");
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> f5b2a598c662023290b5257db85a68405e798886
 }

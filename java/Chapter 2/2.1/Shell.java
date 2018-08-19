@@ -1,5 +1,4 @@
-public class Selection {
-
+public class Shell {
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
@@ -26,19 +25,22 @@ public class Selection {
 
     public static void sort(Comparable[] a) {
         int N = a.length;
-        for (int i = 0; i < N; i++) {
-            int min = i;
-            for (int j = i + 1; j < N; j++) {
-                if (less(a[j], a[min]))
-                    min = j;
-                exch(a, i, min);
+        int h = 1;
+        while (h < N / 3)
+            h = 3 * h + 1;
+        while (h >= 1) {
+            for (int i = h; i < N; i++) {
+                for (int j = i; j >= h && less(a[j], a[j - h]); j -= h) {
+                    exch(a, j, j - h);
+                }
             }
+            h = h / 3;
         }
     }
 
     public static void main(String[] args) {
-        //String[] a = In.readStrings();
-        String[] a = { "d", "a", "c", "b" };
+        // String[] a = In.readStrings();
+        String[] a = { "S", "H", "E", "L", "L", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E" };
         sort(a);
         assert isSorted(a);
         show(a);

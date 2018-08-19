@@ -1,4 +1,4 @@
-public class Selection {
+public class Insertion {
 
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
@@ -26,18 +26,15 @@ public class Selection {
 
     public static void sort(Comparable[] a) {
         int N = a.length;
-        for (int i = 0; i < N; i++) {
-            int min = i;
-            for (int j = i + 1; j < N; j++) {
-                if (less(a[j], a[min]))
-                    min = j;
-                exch(a, i, min);
-            }
+        for (int i = 1; i < N; i++) {
+            for (int j = i; j > 0 && less(a[j], a[j - 1]); j--)
+                exch(a, j, j - 1);
         }
+
     }
 
     public static void main(String[] args) {
-        //String[] a = In.readStrings();
+        // String[] a = In.readStrings();
         String[] a = { "d", "a", "c", "b" };
         sort(a);
         assert isSorted(a);

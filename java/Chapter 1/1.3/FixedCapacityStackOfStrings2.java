@@ -1,8 +1,8 @@
-public class FixedCapacityStackOfStrings {
+public class FixedCapacityStackOfStrings2 {
     private String[] a; // stack entries
     private int N; // size
 
-    public FixedCapacityStackOfStrings(int cap) {
+    public FixedCapacityStackOfStrings2(int cap) {
         a = new String[cap];
     }
 
@@ -23,8 +23,8 @@ public class FixedCapacityStackOfStrings {
     }
 
     public static void main(String[] args) {
-        FixedCapacityStackOfStrings s;
-        s = new FixedCapacityStackOfStrings(100);
+        FixedCapacityStackOfStrings2 s;
+        s = new FixedCapacityStackOfStrings2(100);
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
             if (!item.equals("-"))

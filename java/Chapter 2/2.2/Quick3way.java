@@ -1,6 +1,4 @@
-import java.util.Random;
-
-public class Quick {
+public class Quick3way {
 
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
@@ -69,7 +67,7 @@ public class Quick {
 
     public static void main(String[] args) {
         // String[] a = In.readStrings();
-        String[] a = {  "R"  ,"B",  "W",  "W",  "R",  "W",  "B",  "R",  "R",  "W",  "B", "R" };
+        String[] a = {"R", "B", "W", "W", "R", "W", "B", "R", "R", "W", "B", "R"};
         // String[] a = {"K", "R", "A", "T", "E", "L", "E", "P", "U", "I", "M", "Q",
         // "C", "X", "O", "S"};
         sort(a);

@@ -1,9 +1,9 @@
 import java.util.Arrays;
 
-public class StaticSETofInts {
+public class StaticSETofInts2 {
     private int[] a;
 
-    public StaticSETofInts(int[] keys) {
+    public StaticSETofInts2(int[] keys) {
         a = new int[keys.length];
         for (int i = 0; i < keys.length; i++)
             a[i] = keys[i]; // defensive copy
@@ -31,7 +31,7 @@ public class StaticSETofInts {
 
     public static void main(String[] args) {
         int[] w = In.readInts(args[0]);
-        StaticSETofInts set = new StaticSETofInts(w);
+        StaticSETofInts2 set = new StaticSETofInts2(w);
         while (!StdIn.isEmpty()) { // Read key, print if not in whitelist.
             int key = StdIn.readInt();
             if (set.rank(key) == -1)

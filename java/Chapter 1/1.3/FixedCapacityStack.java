@@ -23,12 +23,9 @@ public class FixedCapacityStack<Item> {
     }
 
     public static void main(String[] args) {
-<<<<<<< HEAD
         FixedCapacityStack<String> s;
         s = new FixedCapacityStack<String>(100);
-=======
-        FixedCapacityStack<String> s;   s = new FixedCapacityStack<String>(100); 
->>>>>>> f5b2a598c662023290b5257db85a68405e798886
+
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
             if (!item.equals("-"))
@@ -38,8 +35,5 @@ public class FixedCapacityStack<Item> {
         }
         StdOut.println("(" + s.size() + " left on stack)");
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> f5b2a598c662023290b5257db85a68405e798886
+ 
 }

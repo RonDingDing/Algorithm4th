@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Out;
+
 public class Cat {
     public static void main(String[] args) { // Copy input files to out (last argument).
         Out out = new Out(args[args.length - 1]);

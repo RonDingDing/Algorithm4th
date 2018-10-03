@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 public class Insertion {
 
     private static boolean less(Comparable v, Comparable w) {
@@ -43,7 +45,7 @@ public class Insertion {
 
     public static void main(String[] args) {
         // String[] a = In.readStrings();
-        String[] a = { "d", "a", "c", "b", "e", "a" };
+        String[] a = {"d", "a", "c", "b", "e", "a"};
         ssort(a, 0, 6);
         // assert isSorted(a);
         show(a);

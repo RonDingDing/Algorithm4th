@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 public class Stack<Item> {
     private Node first;
     private int N;
@@ -32,7 +35,7 @@ public class Stack<Item> {
 
     public static void main(String[] args) {
         Stack<String> s = new Stack<String>();
-        
+
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
             if (!item.equals("-"))

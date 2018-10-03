@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 public class Shell {
     private static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
@@ -40,7 +42,7 @@ public class Shell {
 
     public static void main(String[] args) {
         // String[] a = In.readStrings();
-        String[] a = { "S", "H", "E", "L", "L", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E" };
+        String[] a = {"S", "H", "E", "L", "L", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
         sort(a);
         assert isSorted(a);
         show(a);

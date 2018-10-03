@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 public class FixedCapacityStackOfStrings2 {
     private String[] a; // stack entries
     private int N; // size

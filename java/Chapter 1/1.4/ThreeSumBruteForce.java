@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
+
 public class ThreeSumBruteForce {
     public static int count(int[] a) {
         int N = a.length;

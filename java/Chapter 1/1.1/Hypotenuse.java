@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 public class Hypotenuse {
 
     public static double algorithm(double a, double b) {
@@ -5,6 +7,6 @@ public class Hypotenuse {
     }
 
     public static void main(String[] args) {
-        System.out.println(algorithm(3, 4));
+        StdOut.println(algorithm(3, 4));
     }
 }

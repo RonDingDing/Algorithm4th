@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 public class Merge {
     public static Comparable[] aux;
 
@@ -62,7 +64,7 @@ public class Merge {
 
     public static void main(String[] args) {
         // String[] a = In.readStrings();
-        String[] a = { "S", "H", "E", "L", "L", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E" };
+        String[] a = {"S", "H", "E", "L", "L", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
         sort(a);
         assert isSorted(a);
         show(a);

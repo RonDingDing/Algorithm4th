@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 public class EuclidAlgorithm {
     public static int algorithm(int p, int q) {
         if (q == 0)
@@ -7,6 +9,6 @@ public class EuclidAlgorithm {
     }
 
     public static void main(String[] args) {
-        System.out.println(algorithm(99, 3));
+        StdOut.println(algorithm(99, 3));
     }
 }

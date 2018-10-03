@@ -1,10 +1,14 @@
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.Stopwatch;
+
 public class SortCompare {
     public static double time(String algs, Double[] a) {
         Stopwatch timer = new Stopwatch();
         if (algs.equals("Insertion"))
             Insertion.sort(a);
         if (algs.equals("Selection"))
-            Selection.sort(a);        
+            Selection.sort(a);
         if (algs.equals("Shell"))
             Shell.sort(a);
         // if (algs.equals("Merge"))
@@ -28,7 +32,7 @@ public class SortCompare {
         return total;
     }
 
-    public static void main(String [] args){
+    public static void main(String[] args) {
         String algs1 = args[0];
         String algs2 = args[1];
         int N = Integer.parseInt(args[2]);
@@ -36,6 +40,6 @@ public class SortCompare {
         double t1 = timeRandomInput(algs1, N, T);
         double t2 = timeRandomInput(algs2, N, T);
         StdOut.printf("For %d random Doubles\n    %s is", N, algs1);
-        StdOut.printf(" %.1f times faster than %s\n", t2/t1, algs2);
+        StdOut.printf(" %.1f times faster than %s\n", t2 / t1, algs2);
     }
 }

@@ -1,20 +1,23 @@
+
 /* *****************************************************************************
  *  Name: Ron Ding
  *  Date: 2018-10-03
  *  Description:
  **************************************************************************** */
 
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+
 public class Percolation {
 
     private final WeightedQuickUnionUF uf;
     private final WeightedQuickUnionUF ufF;
 
-    private int base;
+    private final int base;
     private final boolean[][] grid;
 
-    private int first;
-    private int last;
-
+    private final int first;
+    private final int last;
+    private int num;
 
     public Percolation(int n) { // create N-by-N grid, with all sites blocked
         if (n <= 0) {
@@ -28,6 +31,7 @@ public class Percolation {
 
         first = 0;
         last = n * n + 1;
+        num = 0;
     }
 
     public void open(int row, int col) {
@@ -49,14 +53,15 @@ public class Percolation {
             unionIfOpen(box, row, col + 1);
 
             grid[row - 1][col - 1] = true;
+            num += 1;
         }
     }
 
-    public boolean isOpen(int row, int col) {   // is site (row row, column col) open?
+    public boolean isOpen(int row, int col) { // is site (row row, column col) open?
         return grid[row - 1][col - 1];
     }
 
-    public boolean isFull(int row, int col) {   // is site (row row, column col) connected to top?
+    public boolean isFull(int row, int col) { // is site (row row, column col) connected to top?
         if (isOpen(row, col)) {
             int box = getBox(row, col);
             return ufF.connected(first, box);
@@ -64,7 +69,7 @@ public class Percolation {
         return false;
     }
 
-    public boolean percolates() {   // does the system percolate?
+    public boolean percolates() { // does the system percolate?
         return uf.connected(first, last);
     }
 
@@ -75,13 +80,16 @@ public class Percolation {
                 uf.union(neighborBox, box);
                 ufF.union(neighborBox, box);
             }
-        }
-        catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             // don't connect field with field outside grid
         }
     }
 
     private int getBox(int row, int col) {
         return (row - 1) * base + col;
+    }
+
+    public int numberOfOpenSites() {
+        return num;
     }
 }

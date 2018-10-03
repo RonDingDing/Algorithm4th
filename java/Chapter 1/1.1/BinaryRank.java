@@ -1,4 +1,5 @@
- 
+import edu.princeton.cs.algs4.StdOut;
+
 public class BinaryRank {
     public static int rank(int key, int[] a) {
         //查看数组中某个数的排名，若数不在数组中，返回-1
@@ -18,7 +19,7 @@ public class BinaryRank {
     }
 
     public static void main(String[] args) {
-        int[] a = { 1,2,3,4,6 };
-        System.out.println(rank(4, a));
+        int[] a = {1, 2, 3, 4, 6};
+        StdOut.println(rank(4, a));
     }
 }

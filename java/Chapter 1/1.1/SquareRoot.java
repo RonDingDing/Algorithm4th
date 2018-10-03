@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 public class SquareRoot {
     public static double algorithm(double c) {
         if (c < 0)
@@ -10,6 +12,6 @@ public class SquareRoot {
     }
 
     public static void main(String[] args) {
-        System.out.println(algorithm(3));
+        StdOut.println(algorithm(3));
     }
 }

@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdOut;
+
 public class Selection {
 
     private static boolean less(Comparable v, Comparable w) {
@@ -38,7 +40,7 @@ public class Selection {
 
     public static void main(String[] args) {
         //String[] a = In.readStrings();
-        String[] a = { "d", "a", "c", "b" };
+        String[] a = {"d", "a", "c", "b"};
         sort(a);
         assert isSorted(a);
         show(a);

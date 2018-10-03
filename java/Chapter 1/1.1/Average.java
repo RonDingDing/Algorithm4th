@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 public class Average {
     public static void main(String[] args) { // Average the numbers on StdIn.
         // 输入一个数之后按回车，完毕后按Ctrl-Z

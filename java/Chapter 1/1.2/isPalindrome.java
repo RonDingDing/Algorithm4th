@@ -1,4 +1,7 @@
+import edu.princeton.cs.algs4.StdOut;
+
 public class isPalindrome {
+
     public static boolean algorithm(String s) {
         int N = s.length();
         for (int i = 0; i < N / 2; i++)

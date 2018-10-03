@@ -1,3 +1,6 @@
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 public class FixedCapacityStack<Item> {
     private Item[] a;
     private int N;
@@ -35,5 +38,5 @@ public class FixedCapacityStack<Item> {
         }
         StdOut.println("(" + s.size() + " left on stack)");
     }
- 
+
 }

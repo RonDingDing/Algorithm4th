@@ -1,4 +1,6 @@
-import java.util.Random;
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
+
 
 public class Quick {
 
@@ -33,7 +35,7 @@ public class Quick {
 
     private static void sort(Comparable[] a, int lo, int hi) {
         //if (hi <= lo) return;
-        int M = (int)(StdRandom.uniform() * 15);
+        int M = (int) (StdRandom.uniform() * 15);
         if (hi <= lo + M) {
             Insertion.ssort(a, lo, hi);
             return;
@@ -64,7 +66,7 @@ public class Quick {
 
     public static void main(String[] args) {
         // String[] a = In.readStrings();
-        String[] a = { "Q", "U", "I", "C", "K", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E" };
+        String[] a = {"Q", "U", "I", "C", "K", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
         // String[] a = {"K", "R", "A", "T", "E", "L", "E", "P", "U", "I", "M", "Q",
         // "C", "X", "O", "S"};
         sort(a);

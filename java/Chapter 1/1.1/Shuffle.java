@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdRandom;
+
 public class Shuffle {
 
     public static void algorithm(double[] a) {
@@ -9,7 +11,8 @@ public class Shuffle {
             a[r] = temp;
         }
     }
+
     public static void main(String[] args) {
- 
+
     }
 }

@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class Bag<Item> implements Iterable<Item> {
+public class  Bag<Item> implements Iterable<Item> {
     private Node first;
     private int N;
 

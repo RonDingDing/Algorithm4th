@@ -12,6 +12,7 @@
       <sourceFolder url="file://$MODULE_DIR$/java/Chapter 2/2.2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/java/StdLib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/java/Assignment/deque" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/java/Chapter 3/3.1" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

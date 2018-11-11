@@ -17,6 +17,7 @@ public class Point implements Comparable<Point> {
     private final int x;     // x-coordinate of this point
     private final int y;     // y-coordinate of this point
 
+
     /**
      * Initializes a new point.
      *
@@ -64,8 +65,9 @@ public class Point implements Comparable<Point> {
         if (this.x == that.x && this.y == that.y) return Double.NEGATIVE_INFINITY;
         else if (this.y == that.y) return +0.0;
         else if (this.x == that.x) return Double.POSITIVE_INFINITY;
-        else return (float) (this.y - that.y) / (float) (this.x - that.x);
+        else return  (that.y - this.y) * 1.0 /(that.x - this.x);
     }
+
 
     /**
      * Compares two points by y-coordinate, breaking ties by x-coordinate.
@@ -81,6 +83,15 @@ public class Point implements Comparable<Point> {
      */
     public int compareTo(Point that) {
         /* YOUR CODE HERE */
+        if (this.y > that.y) {
+            return 1;
+        } else if (this.y < that.y) {
+            return -1;
+        } else if (this.x > that.x) {
+            return 1;
+        } else if (this.x < that.x) {
+            return -1;
+        } else return 0;
     }
 
     /**
@@ -91,6 +102,28 @@ public class Point implements Comparable<Point> {
      */
     public Comparator<Point> slopeOrder() {
         /* YOUR CODE HERE */
+        return new SlopeOrder(this);
+    }
+
+    private class SlopeOrder implements Comparator<Point> {
+        private final Point p0;
+
+        public SlopeOrder(Point invokePoint) {
+            p0 = invokePoint;
+        }
+
+        public int compare(Point p1, Point p2) {
+            double d01 = p0.slopeTo(p1);
+            double d02 = p0.slopeTo(p2);
+
+            if (d01 < d02) {
+                return -1;
+            } else if (d01 > d02) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
     }
 
 
@@ -110,6 +143,32 @@ public class Point implements Comparable<Point> {
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
-        /* YOUR CODE HERE */
+
+//        // read the n points from a file
+//        In in = new In(args[0]);
+//        int n = in.readInt();
+//        Point[] points = new Point[n];
+//        for (int i = 0; i < n; i++) {
+//            int x = in.readInt();
+//            int y = in.readInt();
+//            points[i] = new Point(x, y);
+//        }
+//
+//        // draw the points
+//        StdDraw.enableDoubleBuffering();
+//        StdDraw.setXscale(0, 32768);
+//        StdDraw.setYscale(0, 32768);
+//        for (Point p : points) {
+//            p.draw();
+//        }
+//        StdDraw.show();
+
+        // print and draw the line segments
+
+//        for (LineSegment segment : collinear.segments()) {
+//            StdOut.println(segment);
+//            segment.draw();
+//        }
+//        StdDraw.show();
     }
 }

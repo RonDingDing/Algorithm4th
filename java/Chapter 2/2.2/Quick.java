@@ -64,6 +64,20 @@ public class Quick {
         return cat;
     }
 
+
+    // 选择第k大的元素 0开始
+    public static Comparable select(Comparable[] a, int k) {
+        StdRandom.shuffle(a);
+        int low = 0, high = a.length - 1;
+        while (high > low) {
+            int j = partition(a, low, high);
+            if (j < k) low = j + 1;
+            else if (j > k) high = j - 1;
+            else return a[k];
+        }
+        return a[k];
+    }
+
     public static void main(String[] args) {
         // String[] a = In.readStrings();
         String[] a = {"Q", "U", "I", "C", "K", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};

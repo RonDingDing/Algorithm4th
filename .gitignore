@@ -3,3 +3,4 @@
 *.class
 *.json
 *.txt
+out/*.*

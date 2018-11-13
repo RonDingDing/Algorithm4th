@@ -51,7 +51,6 @@ public class Quick3way {
     }
 
    
-
     public static void main(String[] args) {
         // String[] a = In.readStrings();
         String[] a = {"R", "B", "W", "W", "R", "W", "B", "R", "R", "W", "B", "R"};

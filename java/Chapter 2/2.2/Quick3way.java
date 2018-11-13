@@ -50,23 +50,7 @@ public class Quick3way {
         sort(a, gt + 1, hi);
     }
 
-    private static int partition(Comparable[] a, int lo, int hi) {
-        int boy = lo, cat = hi + 1;
-        Comparable v = a[lo];
-        while (true) {
-            while (less(a[++boy], v))
-                if (boy == hi)
-                    break;
-            while (less(v, a[--cat]))
-                if (cat == lo)
-                    break;
-            if (boy >= cat)
-                break;
-            exch(a, boy, cat);
-        }
-        exch(a, lo, cat);
-        return cat;
-    }
+   
 
     public static void main(String[] args) {
         // String[] a = In.readStrings();

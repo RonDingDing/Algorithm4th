@@ -43,6 +43,7 @@ public class Selection {
         String[] a = {"d", "a", "c", "b"};
         sort(a);
         assert isSorted(a);
+
         show(a);
     }
 }

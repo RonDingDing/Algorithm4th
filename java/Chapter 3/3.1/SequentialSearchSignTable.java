@@ -1,6 +1,9 @@
 import edu.princeton.cs.algs4.StdOut;
+import java.util.Queue;
 
 public class SequentialSearchSignTable<Key, Value> {
+    private Node first;
+    private int num = 0;
     private class Node {
         Key key;
         Value val;
@@ -13,8 +16,8 @@ public class SequentialSearchSignTable<Key, Value> {
         }
     }
 
-    private Node first;
-    private int num = 0;
+
+
     public Value get(Key key) {
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key)) return x.val;
@@ -44,5 +47,4 @@ public class SequentialSearchSignTable<Key, Value> {
 
 
     }
-
 }

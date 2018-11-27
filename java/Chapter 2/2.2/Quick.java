@@ -34,12 +34,12 @@ public class Quick {
     }
 
     private static void sort(Comparable[] a, int lo, int hi) {
-        //if (hi <= lo) return;
-        int M = (int) (StdRandom.uniform() * 15);
-        if (hi <= lo + M) {
-            Insertion.ssort(a, lo, hi);
-            return;
-        }
+        if (hi <= lo) return;
+//        int M = 15;
+//        if (hi <= lo + M) {
+//            Insertion.ssort(a, lo, hi+1);
+//            return;
+//        }
 
         int j = partition(a, lo, hi);
         sort(a, lo, j - 1);
@@ -47,21 +47,16 @@ public class Quick {
     }
 
     private static int partition(Comparable[] a, int lo, int hi) {
-        int boy = lo, cat = hi + 1;
+        int i = lo, j = hi + 1;
         Comparable v = a[lo];
         while (true) {
-            while (less(a[++boy], v))
-                if (boy == hi)
-                    break;
-            while (less(v, a[--cat]))
-                if (cat == lo)
-                    break;
-            if (boy >= cat)
-                break;
-            exch(a, boy, cat);
+            while (less(a[++i], v)) if (i == hi) break;
+            while (less(v, a[--j])) if (j == lo) break;
+            if (i >= j) break;
+            exch(a, i, j);
         }
-        exch(a, lo, cat);
-        return cat;
+        exch(a, lo, j);
+        return j;
     }
 
 
@@ -80,7 +75,8 @@ public class Quick {
 
     public static void main(String[] args) {
         // String[] a = In.readStrings();
-        String[] a = {"Q", "U", "I", "C", "K", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
+        Integer[] a = {3, 1, 2, 6, 7, 4, 5};
+        
         // String[] a = {"K", "R", "A", "T", "E", "L", "E", "P", "U", "I", "M", "Q",
         // "C", "X", "O", "S"};
         sort(a);

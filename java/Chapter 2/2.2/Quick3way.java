@@ -53,7 +53,7 @@ public class Quick3way {
    
     public static void main(String[] args) {
         // String[] a = In.readStrings();
-        String[] a = {"R", "B", "W", "W", "R", "W", "B", "R", "R", "W", "B", "R"};
+        Integer[] a = {1,1,2,1,2,2,4,3,3};
         // String[] a = {"K", "R", "A", "T", "E", "L", "E", "P", "U", "I", "M", "Q",
         // "C", "X", "O", "S"};
         sort(a);

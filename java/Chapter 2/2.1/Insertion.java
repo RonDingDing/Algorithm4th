@@ -45,7 +45,7 @@ public class Insertion {
 
     public static void main(String[] args) {
         // String[] a = In.readStrings();
-        String[] a = {"d", "a", "c", "b", "e", "a"};
+        Integer[] a = {2,4,1,3,5,6};
         ssort(a, 0, 6);
         // assert isSorted(a);
         show(a);

@@ -24,27 +24,31 @@ def quicksort2(array, low, high):
 
 
 def partition(array, low, high):
-    boy = low
-    cat = high + 1
     v = array[low]
-    while True:
-        while array[boy + 1] < v:
-            boy += 1
-            if boy == high:
-                break
-        while v < array[cat - 1]:
-            cat -= 1
-            if cat == low:
-                break
-        if boy >= cat:
-            break
-        exch(array, boy, cat)
-    exch(array, low, cat)
+    i = low + 1
+    j = high
 
-    return cat
+    while True:
+        while array[i] < v:
+            i += 1
+            if i >= high:
+                break
+        while v < array[j]:
+            j -= 1
+            if j <= low:
+                break
+        if i >= j:
+            break
+
+        exch(array, i, j)
+    exch(array, low, j)
+
+    return j
 
 
 if __name__ == "__main__":
-    a = [2, 1, 3, 4, 5, 6]
+    import random
+    a = [2, 1, 3, 5, 4, 6, 7, 8]
+    random.shuffle(a)
     sorting(a)
     print(a)

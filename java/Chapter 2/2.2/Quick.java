@@ -35,11 +35,11 @@ public class Quick {
 
     private static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo) return;
-        int M = 15;
-        if (hi <= lo + M) {
-            Insertion.ssort(a, lo, hi+1);
-            return;
-        }
+//        int M = 15;
+//        if (hi <= lo + M) {
+//            Insertion.ssort(a, lo, hi+1);
+//            return;
+//        }
 
         int j = partition(a, lo, hi);
         sort(a, lo, j - 1);
@@ -75,7 +75,7 @@ public class Quick {
 
     public static void main(String[] args) {
         // String[] a = In.readStrings();
-        Integer[] a = {3, 1, 2, 6, 7, 4, 5};
+        Integer[] a = {2,1,3,4,5,6};
 
         // String[] a = {"K", "R", "A", "T", "E", "L", "E", "P", "U", "I", "M", "Q",
         // "C", "X", "O", "S"};

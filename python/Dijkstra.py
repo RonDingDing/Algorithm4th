@@ -41,7 +41,8 @@ def dijkstra():
         neighbours = graph[node]
         for n in neighbours.keys():
             new_costs = cost + neighbours[n]
-            if costs[n] > new_costs:
+            costsn = costs[n]
+            if costsn > new_costs:
                 costs[n] = new_costs
                 parents[n] = node
         processed.append(node)

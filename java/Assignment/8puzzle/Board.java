@@ -21,7 +21,7 @@ public class Board {
     private String toStr(int[] array) {
         StringBuilder strb = new StringBuilder();
         for (int i = 0; i < array.length; i++) {
-            strb.append((char) (array[i] + 96));
+            strb.append((char) (array[i] + zero));
         }
         return strb.toString();
     }
@@ -128,14 +128,15 @@ public class Board {
     }
 
     public boolean isGoal() {
-        return stringblock == stringgoal;
+        return stringblock.equals(stringgoal);
     }
 
     public String toString() {
         StringBuilder strb = new StringBuilder();
         for (int i = 0; i < n * n; i++) {
-            strb.append((int) stringblock.charAt(i) - zero);
-            if ((i + 1) % 3 == 0) {
+            int number = (int) stringblock.charAt(i) - zero;
+            strb.append(String.format("%2d", number));
+            if ((i + 1) % n == 0) {
                 strb.append("\n");
             } else {
                 strb.append(" ");
@@ -163,7 +164,8 @@ public class Board {
             int stop = n * i + n - 1;
             String substring = stringblock.substring(start, stop + 1);
             if (substring.indexOf((char) zero) == -1) {
-                return new Board(swap(stringblock, start, start + 1));
+                String swapString = swap(stringblock, start, start + 1);
+                return new Board(swapString);
             }
         }
         return null;
@@ -177,7 +179,7 @@ public class Board {
 
         // 上一行
         int up = o - n;
-        if (up > 0) {
+        if (up > -1) {
             String upBlock = swap(stringblock, o, up);
             q.enqueue(new Board(upBlock));
         }
@@ -191,13 +193,13 @@ public class Board {
 
         // 左边
         int left = o - 1;
-        if (left / n == o / n) {
+        if (left > -1 && left / n == o / n) {
             String leftBlock = swap(stringblock, o, left);
             q.enqueue(new Board(leftBlock));
         }
 
         int right = o + 1;
-        if (right / n == o / n) {
+        if (right < n * n && right / n == o / n) {
             String rightBlock = swap(stringblock, o, right);
             q.enqueue(new Board(rightBlock));
         }
@@ -208,7 +210,7 @@ public class Board {
 
 
     public static void main(String[] args) {
-        Board b = new Board(new int[][]{{1, 2, 3}, {4, 0, 7}, {6, 8, 5},});
+        Board b = new Board(new int[][]{{0, 3}, {1, 2}});
         StdOut.println("toString(): ");
         StdOut.println(b.toString());
         StdOut.println();
@@ -233,7 +235,7 @@ public class Board {
 
 
         StdOut.println("equals(): ");
-        StdOut.println(b.equals(new Board(new int[][]{{1, 2, 3}, {4, 0, 7}, {6, 8, 5},})));
+        StdOut.println(b.equals(new Board(new int[][]{{1, 2, 3, 9}, {4, 0, 7, 10}, {6, 8, 5, 11}, {12, 13, 14, 15}})));
         StdOut.println();
 
 
@@ -242,7 +244,7 @@ public class Board {
             StdOut.println(n.toString());
             StdOut.println("\n");
         }
-        StdOut.println(b.twin().toString());
+
 
     }
 }

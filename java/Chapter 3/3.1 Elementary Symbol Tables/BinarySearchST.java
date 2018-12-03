@@ -63,6 +63,9 @@ import edu.princeton.cs.algs4.StdOut;
  * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  */
 
+
+import edu.princeton.cs.algs4.StdOut;
+
 public class BinarySearchST<Key extends Comparable<Key>, Value> {
     private static final int INIT_CAPACITY = 2;
     private Key[] keys;

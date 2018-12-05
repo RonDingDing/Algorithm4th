@@ -1,106 +1,101 @@
-import java.util.Comparator;
 
-import edu.princeton.cs.algs4.StdOut;
+
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Stack;
+import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.MinPQ;
+import edu.princeton.cs.algs4.Stack;
 
 public class Solver {
-    private boolean isSolve = false;
-    private int move = -1;
+
+    private boolean solvable;
+    private int solveMove;
+    private Stack<Board> resultStack;
 
     private class SearchNode implements Comparable<SearchNode> {
+        private final int manhattan;
         private final Board board;
-        private final int move;
-        private final int priority;
         private final SearchNode parent;
+        private final int moveStep;
         private final boolean isTwin;
 
-        public SearchNode(Board board, int move, SearchNode parent, boolean isTwin) {
-            this.board = board;
-            this.move = move;
-            this.priority = board.manhattan() + move;
+        public SearchNode(Board initial, int moves, SearchNode parent, boolean isTwin) {
+            this.board = initial;
+            this.manhattan = board.manhattan() + moves;
             this.parent = parent;
+            this.moveStep = moves;
             this.isTwin = isTwin;
         }
 
-        @Override
         public int compareTo(SearchNode that) {
-            if (this.board.equals(that.board)) return 0;
-            if (this.priority < that.priority) return -1;
-            else return 1;
-        }
-    }
-
-    private final MinPQ<SearchNode> minPQ = new MinPQ<SearchNode>(new Comparator<SearchNode>() {
-        public int compare(SearchNode o1, SearchNode o2) {
-            if (o1.priority < o2.priority) return -1;
-            else if (o1.priority == o2.priority) return 0;
-            else return 1;
-        }
-    });
-
-    private Stack<Board> solutionQueue = new Stack<Board>();
-
-    // find a solution to the initial board (using the A* algorithm)
-    public Solver(Board initial) {
-        Board initialTwin = initial.twin();
-        SearchNode initSearchNode = new SearchNode(initial, 0, null, false);
-        SearchNode initSearchNodeTwin = new SearchNode(initialTwin, 0, null, true);
-        minPQ.insert(initSearchNode);
-        minPQ.insert(initSearchNodeTwin);
-        solve();
-    }
-
-    private void solve() {
-        while (true) {
-            //solve for original
-            SearchNode searchNode = minPQ.delMin();
-            if (searchNode.board.isGoal()) {
-                if (searchNode.isTwin) {
-                    this.isSolve = false;
-                    this.move = -1;
-                } else {
-                    this.isSolve = true;
-                    this.move = searchNode.move;
-                    this.solutionQueue.push(searchNode.board);
-                    while (searchNode.parent != null) {
-                        searchNode = searchNode.parent;
-                        this.solutionQueue.push(searchNode.board);
-                    }
-                }
-                break;
+            if (this.manhattan > that.manhattan) {
+                return 1;
+            } else if (this.manhattan < that.manhattan) {
+                return -1;
             } else {
-                for (Board neiborBoard : searchNode.board.neighbors()) {
-                    SearchNode neiborNode = new SearchNode(neiborBoard, searchNode.move + 1, searchNode, searchNode.isTwin);
-                    if (searchNode.parent == null) {
-                        minPQ.insert(neiborNode);
-                    } else if (!searchNode.parent.board.equals(neiborNode.board)) {
-                        minPQ.insert(neiborNode);
+                return 0;
+            }
+        }
+    }
+
+
+    public Solver(Board initial) {
+        if (initial == null) {
+            throw new java.lang.NullPointerException();
+        }
+
+        MinPQ<SearchNode> nodeQueue = new MinPQ<>();
+        SearchNode firstNode = new SearchNode(initial, 0, null, false);
+        SearchNode twinNode = new SearchNode(initial.twin(), 0, null, true);
+        nodeQueue.insert(twinNode);
+        nodeQueue.insert(firstNode);
+        solve(nodeQueue);
+    }
+
+
+    private void solve(MinPQ<SearchNode> nodeQueue) {
+        while (!nodeQueue.isEmpty()) {
+            SearchNode currentNode = nodeQueue.delMin();
+            Board bord = currentNode.board;
+            if (bord.isGoal()) {
+                if (!currentNode.isTwin) {
+                    resultStack = new Stack<Board>();
+
+                    while (currentNode.parent != null) {
+                        resultStack.push(currentNode.board);
+                        currentNode = currentNode.parent;
+                    }
+                    resultStack.push(currentNode.board);
+                    solvable = true;
+                    solveMove = resultStack.size() - 1;
+                    break;
+                } else {
+                    solvable = false;
+                    solveMove = -1;
+                    break;
+                }
+            } else {
+                for (Board eachBoard : currentNode.board.neighbors()) {
+                    SearchNode neiborNode = new SearchNode(eachBoard, currentNode.moveStep + 1, currentNode, currentNode.isTwin);
+                    if (currentNode.parent == null) {
+                        nodeQueue.insert(neiborNode);
+                    } else if (!currentNode.parent.board.equals(neiborNode.board)) {
+                        nodeQueue.insert(neiborNode);
                     }
                 }
             }
         }
     }
 
-    // is the initial board solvable?
     public boolean isSolvable() {
-        return this.isSolve;
+        return solvable;
     }
 
-    // min number of moves to solve initial board; -1 if no solution
-    public int moves() {
-        return this.move;
-    }
-
-    // sequence of boards in a shortest solution; null if no solution
     public Iterable<Board> solution() {
-        if (this.isSolve) {
-            return this.solutionQueue;
-        } else {
-            return null;
-        }
+        return resultStack;
+    }
 
+    public int moves() {
+        return solveMove;
     }
 
     public static void main(String[] args) {

@@ -1,5 +1,6 @@
 
 import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.StdOut;
 
 public class Board {
     private final int[][] blocks;
@@ -8,9 +9,12 @@ public class Board {
     private final int zeroX;
     private final int zeroY;
 
-//    private final int hammings;
 
     public Board(int[][] blocks) {
+        if (blocks == null) {
+            throw new java.lang.NullPointerException();
+        }
+
         number = blocks.length;
         int zeroX1 = 0, zeroY1 = 0;
         this.blocks = new int[number][number];
@@ -179,16 +183,12 @@ public class Board {
 
     public static void main(String[] args) {
         // create initial board from file
-
-        int[][] blocks = new int[][]{
-                {0, 2, 3},
-                {4, 1, 8},
-                {6, 7, 5}
-        };
-
-        Board initial = new Board(blocks);
-        initial.twin();
-
+        Board board = new Board(
+                new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 0}}
+        );
+        StdOut.print(board.twin());
+        StdOut.print(board.twin().twin());
+        StdOut.print(board.twin().twin().twin());
 
     }
 

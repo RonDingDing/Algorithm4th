@@ -542,7 +542,6 @@ public class BST<Key extends Comparable<Key>, Value> {
                 throw new RuntimeException("floor() function inconsistent");
             st.put(key, i);
         }
-
         for (String s : st.levelOrder())
             StdOut.println(s + " " + st.get(s));
 

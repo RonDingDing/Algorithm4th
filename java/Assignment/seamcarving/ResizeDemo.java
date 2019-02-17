@@ -2,7 +2,7 @@
  *  Compilation:  javac ResizeDemo.java
  *  Execution:    java ResizeDemo input.png columnsToRemove rowsToRemove
  *  Dependencies: SeamCarver.java SCUtility.java
- *                
+ *
  *
  *  Read image from file specified as command line argument. Use SeamCarver
  *  to remove number of rows and columns specified as command line arguments.
@@ -23,7 +23,7 @@ public class ResizeDemo {
 
         Picture inputImg = new Picture(args[0]);
         int removeColumns = Integer.parseInt(args[1]);
-        int removeRows = Integer.parseInt(args[2]); 
+        int removeRows = Integer.parseInt(args[2]);
 
         StdOut.printf("image is %d columns by %d rows\n", inputImg.width(), inputImg.height());
         SeamCarver sc = new SeamCarver(inputImg);
@@ -32,11 +32,14 @@ public class ResizeDemo {
 
         for (int i = 0; i < removeRows; i++) {
             int[] horizontalSeam = sc.findHorizontalSeam();
+
             sc.removeHorizontalSeam(horizontalSeam);
         }
 
         for (int i = 0; i < removeColumns; i++) {
             int[] verticalSeam = sc.findVerticalSeam();
+
+           
             sc.removeVerticalSeam(verticalSeam);
         }
         Picture outputImg = sc.picture();
@@ -47,5 +50,5 @@ public class ResizeDemo {
         inputImg.show();
         outputImg.show();
     }
-    
+
 }

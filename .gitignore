@@ -3,4 +3,8 @@
 *.class
 *.json
 *.txt
+*.png
+*.jpg
+*.iml
+*.zip
 out/*.*

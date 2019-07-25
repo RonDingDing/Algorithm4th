@@ -7,7 +7,6 @@ class Insertion:
             for j in range(i, 0, -1):
                 print(j - 1, j)
                 if self.less(array, j, j - 1):
-
                     self.exch(array, j, j - 1)
 
     def less(self, array, a, b):

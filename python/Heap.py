@@ -18,6 +18,8 @@ class Heap:
             j = 2 * k
             if j < n and self.less(array, j, j + 1):
                 j += 1
+            if not self.less(array, k, j):
+                break
             self.exch(array, k, j)
             k = j
 
@@ -29,7 +31,9 @@ class Heap:
 
 
 if __name__ == "__main__":
+    from random import shuffle
     heap = Heap()
     a = list(range(8))
+    shuffle(a)
     heap.sort(a)
     print(a)

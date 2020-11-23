@@ -49,7 +49,7 @@ class MergeBU:
 if __name__ == "__main__":
     from random import shuffle, randint
 
-    a = list(range(randint(1,100)))
+    a = list(range(randint(1, 100)))
     shuffle(a)
     b = MergeBU(a)
 

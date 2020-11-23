@@ -5,7 +5,6 @@ class Bubble:
     def sort(self, array):
         for i in range(len(array), 0, -1):
             for j in range(i - 1):
-
                 if self.less(array, j + 1, j):
                     self.exch(array, j, j + 1)
 
@@ -20,8 +19,8 @@ class Bubble:
 
 if __name__ == "__main__":
     from random import shuffle, randint
-    a = list(range(randint(1, 20)))
 
+    a = list(range(randint(1, 20)))
 
     shuffle(a)
     Bubble(a)

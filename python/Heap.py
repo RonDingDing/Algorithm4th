@@ -14,7 +14,7 @@ class Heap:
             self.sink(array, 1, n)
 
     def sink(self, array, k, n):
-        while (2 * k <= n):
+        while 2 * k <= n:
             j = 2 * k
             if j < n and self.less(array, j, j + 1):
                 j += 1
@@ -32,6 +32,7 @@ class Heap:
 
 if __name__ == "__main__":
     from random import shuffle
+
     heap = Heap()
     a = list(range(8))
     shuffle(a)

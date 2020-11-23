@@ -19,6 +19,6 @@ class Selection:
 
 
 if __name__ == "__main__":
-    a = [5,1,2,3,4,6]
+    a = [5, 1, 2, 3, 4, 6]
     Selection(a)
     print(a)

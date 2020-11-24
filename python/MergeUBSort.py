@@ -44,9 +44,17 @@ class MergeUB:
 
 
 if __name__ == "__main__":
-    a = list(range(99))
+    from random import randint
+    b = randint(0, 100)
+    c = randint(0, 10)
+    print(b)
+    print(c)
+    a = list(range(0,b,c))
+
     from random import shuffle
 
+    print(a)
     shuffle(a)
+    print(a)
     MergeUB(a)
     print(a)

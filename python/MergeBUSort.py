@@ -1,12 +1,15 @@
+from typing import List
+
+
 class MergeBU:
-    def __init__(self, array):
+    def __init__(self, array: List):
         self.sort_len(array)
 
     def sort_len(self, array):
         self.list = [None] * len(array)
         self.sort(array)
 
-    def sort(self, array):
+    def sort(self, array: List):
         sz = 1
         while sz < len(array):
             low = 0
@@ -17,7 +20,7 @@ class MergeBU:
                 low += sz + sz
             sz = sz + sz
 
-    def merge(self, array, low, seperate, high):
+    def merge(self, array: List, low: int, seperate: int, high: int):
         if not low <= seperate < high:
             return
         i = low
@@ -39,18 +42,26 @@ class MergeBU:
                 array[k] = self.list[i]
                 i += 1
 
-    def less(self, array, a, b):
+    def less(self, array: List, a: int, b: int):
         return array[a] < array[b]
 
-    def exch(self, array, a, b):
+    def exch(self, array: List, a: int, b: int):
         array[a], array[b] = array[b], array[a]
 
 
 if __name__ == "__main__":
-    from random import shuffle, randint
+    from random import randint
 
-    a = list(range(randint(1, 100)))
+    b = randint(0, 100)
+    c = randint(1, 10)
+    print(b)
+    print(c)
+    a = list(range(0, b, c))
+
+    from random import shuffle
+
+    print(a)
     shuffle(a)
-    b = MergeBU(a)
-
+    print(a)
+    Merge(a)
     print(a)

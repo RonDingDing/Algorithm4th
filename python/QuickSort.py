@@ -53,23 +53,33 @@ class QuickSort:
         self.sort(array, pivot + 1, end)
 
     def partition(self, array: List, start: int, end: int):
-        pivot = end
+        pivot = array[end]
         i = start
         for j in range(start, end):
             ele = array[j]
-            if ele <= pivot:
+            if ele < pivot:
                 self.exchange(array, i, j)
                 i += 1
-        self.exchange(array, i, pivot)
-
-        return pivot
+        self.exchange(array, i, end)
+        return i
 
     def exchange(self, array: List, a: int, b: int):
         array[a], array[b] = array[b], array[a]
 
 
 if __name__ == "__main__":
-    a = [1, 2, 3, 4]
+    from random import randint
 
+    b = randint(0, 100)
+    c = randint(0, 10)
+    print(b)
+    print(c)
+    a = list(range(0, b, c))
+
+    from random import shuffle
+
+    print(a)
+    shuffle(a)
+    print(a)
     QuickSort(a)
     print(a)

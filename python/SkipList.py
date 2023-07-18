@@ -9,7 +9,7 @@ class SkipListNode(object):
         self.deeps = [None] * high
 
     def __str__(self):
-        return ' '.join((str(self.data), str(self.deeps)))
+        return ' '.join(('SkipListNode', str(self.data), str(self.deeps)))
 
     def __repr__(self):
         return self.__str__()
@@ -113,7 +113,7 @@ class SkipList(object):
 
 if __name__ == '__main__':
     sl = SkipList()
-    for i in range(100):
+    for i in range(10):
         sl.insert(i)
     print(sl)
     p = sl.find(7)

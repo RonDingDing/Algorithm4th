@@ -59,7 +59,6 @@ class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         amount = len(lists)
         interval = 1
-
         while interval < amount:
             for i in range(0, amount - interval, interval * 2):
                 lists[i] = self.merge_two_list(lists[i], lists[i + interval])
@@ -102,7 +101,39 @@ class Solution:
         return new
 
 
-lists = [[7], [49]]
+class SolutionForce:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        r = []
+        for l in lists:
+            while l:
+                r.append(l.val)
+                l = l.next
+        head = point = ListNode()
+        for x in sorted(r):
+            point.next = ListNode(x)
+            point = point.next
+        return head.next
+
+
+from queue import PriorityQueue
+
+
+class SolutionPriorityQueue:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        r = PriorityQueue()
+        for l in lists:
+            while l:
+                r.put(l.val)
+                l = l.next
+        head = point = ListNode()
+        while not r.empty():
+            x = r.get()
+            point.next = ListNode(x)
+            point = point.next
+        return head.next
+
+
+lists = [[1, 4, 5], [1, 3, 4], [2, 6]]
 linked = []
 for one in lists:
     c = None
@@ -112,4 +143,4 @@ for one in lists:
         c = n
     linked.append(c)
 print(linked)
-print(Solution().mergeKLists(linked))
+print(SolutionPriorityQueue().mergeKLists(linked))

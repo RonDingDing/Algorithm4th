@@ -136,7 +136,7 @@ class Solution3:
     # 单向bfs搜索：从start到target
     def openLock(self, deadends: List[str], target: str) -> int:
         start = "0000"
-        deadends = set(deadends)
+        deadend = set(deadends)
         if start in deadends or target in deadends:
             return -1
         if target == start:
@@ -145,7 +145,7 @@ class Solution3:
         queue.put((start, 0))
         while not queue.empty():
             cur, step = queue.get()
-            deadends.add(cur)
+            deadend.add(cur)
             for i in range(4):
                 for p in (1, -1):
                     neighbour = cur[:i] + str((int(cur[i]) + p) % 10) + cur[i + 1 :]
@@ -154,7 +154,7 @@ class Solution3:
 
                     if neighbour not in deadends:
                         queue.put((neighbour, step + 1))
-                        deadends.add(neighbour)
+                        deadend.add(neighbour)
 
         return -1
 
